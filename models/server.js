@@ -5,6 +5,7 @@ const socketio = require('socket.io');
 // cuando hay que moverse entre directorios hay que importar path
 // es propio de espress
 const path = require('path');
+const cors = require('cors');
 const Sockets = require('./sockets');
 
 
@@ -25,6 +26,9 @@ class Server {
     middlewares() {
         //desplegar el directorio publico
         this.app.use( express.static( path.resolve( __dirname, '../public')));
+
+        //CORS
+        this.app.use( cors() );
     }
 
     configurarSockets() {
